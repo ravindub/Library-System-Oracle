@@ -106,7 +106,7 @@ error:function (){}
       <!------MENU SECTION START-->
 <jsp:include page="includes/header.jsp" />
 <!-- MENU SECTION END-->
-    <div class="content-wra
+    
     <div class="content-wrapper">
          <div class="container">
         <div class="row pad-botm">
@@ -117,7 +117,7 @@ error:function (){}
 
 </div>
 <div class="row">
-<div class="col-md-10 col-sm-6 col-xs-12 col-md-offset-1"">
+<div class="col-md-10 col-sm-6 col-xs-12 col-md-offset-1">
 <div class="panel panel-info">
 <div class="panel-heading">
 Issued Book Details
@@ -179,7 +179,7 @@ Issued Book Details
 <% 
 if(rs.getString("fine")==null)
 {%>
-<input class="form-control" type="text" name="fine" id="fine"  required />
+<input class="form-control" type="number" name="fine" id="fine"  required />
 
 <% }else {
 	out.println(rs.getString("fine"));
@@ -189,11 +189,11 @@ if(rs.getString("fine")==null)
  <% if(rs.getInt("RetrunStatus")==0){%>
 
 <button type="submit" name="return" id="submit" class="btn btn-info">Return Book </button>
-
- </div>
+</form>
 
 <% }} %>
-                                    </form>
+</div>
+                                    
                             </div>
                         </div>
                             </div>
@@ -201,7 +201,7 @@ if(rs.getString("fine")==null)
         </div>
    
     </div>
-    </div>
+    
      <!-- CONTENT-WRAPPER SECTION END-->
 <jsp:include page="includes/footer.jsp" />
       <!-- FOOTER SECTION END-->

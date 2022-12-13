@@ -94,7 +94,7 @@ if(login!=null)
 <div class="form-group">
 <label>Password</label>
 <input class="form-control" type="password" name="password" required autocomplete="off"  />
-<p class="help-block"><a href="user-forgot-password.jsp">Forgot Password</a></p>
+
 </div>
 
 

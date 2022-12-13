@@ -13,9 +13,11 @@
 	}
 %>
 <%
-	PreparedStatement ps;
+		PreparedStatement ps;
 		Connection conn = dbConnect.getConnection();
         ResultSet rs= null;
+        
+       
         
 %>
 
@@ -30,30 +32,46 @@ if(session.getAttribute("login")==null)
 else
 { 
 	String issue=request.getParameter("issue");
-if(issue!=null)
-{
-
-	/*String studentid=(String)session.getAttribute("stdid");*/
-	String bookid=request.getParameter("bookdetails");
-	String sql="INSERT INTO  tblissuedbookdetails(StudentID,BookId,IssuesDate) VALUES(?,?,?)";
-	ps=conn.prepareStatement(sql);
-	ps.setString(1,studentid);
-	ps.setInt(2,Integer.parseInt(bookid));
-	ps.setString(3,getDate());
-	int i=ps.executeUpdate();
-
-
-	if(i>0)
+	if(issue!=null)
 	{
-		session.setAttribute("msg","Book issued successfully");
-		response.sendRedirect("issued-books.jsp");
+		String bookName=request.getParameter("bookname");
+		
+		String sql1 ="SELECT id FROM tblbooks WHERE (BookName=?)";
+		ps=conn.prepareStatement(sql1,ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE);
+		ps.setString(1,bookName);
+		ResultSet rs1=ps.executeQuery();
+		
+		
+		if(rs1.next())
+		{
+			
+		
+		
+			String sql="INSERT INTO  tblissuedbookdetails(StudentID,BookId,IssuesDate) VALUES(?,?,?)";
+			ps=conn.prepareStatement(sql);
+			ps.setString(1,studentid);
+			ps.setInt(2,rs1.getInt("id"));
+			ps.setString(3,getDate());
+			int i=ps.executeUpdate();
+		
+		
+			if(i>0)
+			{
+				session.setAttribute("msg","Book issued successfully");
+				response.sendRedirect("issued-books.jsp");
+			}
+			else 
+			{
+				session.setAttribute("error","Something went wrong. Please try again");
+				response.sendRedirect("issued-books.jsp");
+			}
+		}	
+	
 	}
-	else 
-	{
-		session.setAttribute("error","Something went wrong. Please try again");
-		response.sendRedirect("issued-books.jsp");
-	}
-
+else{
+	String sql = "SELECT * from tblbooks";
+	ps=conn.prepareStatement(sql,ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE);
+	rs=ps.executeQuery();
 }
 %>
 <!DOCTYPE html>
@@ -72,38 +90,7 @@ if(issue!=null)
     <link href="assets/css/style.css" rel="stylesheet" />
     <!-- GOOGLE FONT -->
     <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
-<script>
-// function for get student name
-function getstudent() {
-$("#loaderIcon").show();
-jQuery.ajax({
-url: "get_student.jsp",
-data:'studentid='+$("#studentid").val(),
-type: "POST",
-success:function(data){
-$("#get_student_name").html(data);
-$("#loaderIcon").hide();
-},
-error:function (){}
-});
-}
 
-//function for book details
-function getbook() {
-$("#loaderIcon").show();
-jQuery.ajax({
-url: "get_book.jsp",
-data:'bookid='+$("#bookid").val(),
-type: "POST",
-success:function(data){
-$("#get_book_name").html(data);
-$("#loaderIcon").hide();
-},
-error:function (){}
-});
-}
-
-</script> 
 <style type="text/css">
   .others{
     color:red;
@@ -117,7 +104,7 @@ error:function (){}
       <!------MENU SECTION START-->
 <jsp:include page="includes/header.jsp" />
 <!-- MENU SECTION END-->
-    <div class="content-wra
+    
     <div class="content-wrapper">
          <div class="container">
         <div class="row pad-botm">
@@ -128,7 +115,7 @@ error:function (){}
 
 </div>
 <div class="row">
-<div class="col-md-10 col-sm-6 col-xs-12 col-md-offset-1"">
+<div class="col-md-10 col-sm-6 col-xs-12 col-md-offset-1">
 <div class="panel panel-info">
 <div class="panel-heading">
 Borrow a New Book
@@ -137,38 +124,34 @@ Borrow a New Book
 <form role="form" method="post">
 
 <div class="form-group">
-<label>Student id<span style="color:red;">*</span></label>
-<input class="form-control" type="text" name="studentid" id="studentid" value="<%=studentid%>" />
+<label>Select a Book<span style="color:red;">*</span></label>
+<select class="form-control" name="bookname"  required>
+<%
+if(rs!=null)
+{
+while(rs.next())
+{
+String bname = rs.getString("BookName"); 
+%>
+<option value="<%=bname %>"><%=bname %></option>
+<%
+}
+
+}
+%>
+</select>
 </div>
 
-<div class="form-group">
-<span id="get_student_name" style="font-size:16px;"></span> 
-</div>
-
-
-
-
-
-<div class="form-group">
-<label>ISBN Number or Book Title<span style="color:red;">*</span></label>
-<input class="form-control" type="text" name="booikid" id="bookid" onBlur="getbook()"  required="required" />
-</div>
-
- <div class="form-group">
-
-  <select  class="form-control" name="bookdetails" id="get_book_name" readonly>
-   
- </select>
- </div>
 <button type="submit" name="issue" value="issue" id="submit" class="btn btn-info">Borrow Book</button>
 
-                                    </form>
-                            </div>
-                        </div>
-                            </div>
+  </form>
+     </div>
+           </div>
+                  </div>
 
-        </div>
+        
    
+    </div>
     </div>
     </div>
      <!-- CONTENT-WRAPPER SECTION END-->

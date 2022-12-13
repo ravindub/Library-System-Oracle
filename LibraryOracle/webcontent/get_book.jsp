@@ -11,7 +11,7 @@ String bookid=request.getParameter("bookid");
 if(bookid!=null) 
 {
 
-	String sql ="SELECT BookName,id FROM tblbooks WHERE (ISBNNumber=?)";
+	String sql ="SELECT BookName,id FROM tblbooks WHERE (BookName=?)";
 	ps=conn.prepareStatement(sql,ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE);
 	ps.setString(1,bookid);
 	rs=ps.executeQuery();
