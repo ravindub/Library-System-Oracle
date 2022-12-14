@@ -63,6 +63,8 @@ rs=ps.executeQuery();
 
 rs.last();
 int issuedbooks=rs.getRow();
+
+ps.close();
 %>
 
                             <h3> <%=issuedbooks%></h3>

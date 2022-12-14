@@ -36,6 +36,9 @@ if(emailid!=null) {
 			out.println("<span style='color:green'> Email available for Registration .</span>");
 			out.println("<script>$('#submit').prop('disabled',false);</script>");
 		}
+		
+		ps.close();
+		
 	}
 }
 

@@ -16,21 +16,6 @@ if(email==null)
 }
 else
 { 
-	String id=request.getParameter("del");
-	if(id!=null)
-	{
-		String sql = "delete from tblbooks  WHERE id=?";
-		ps=conn.prepareStatement(sql);
-		ps.setInt(1,Integer.parseInt(id));
-		int i=ps.executeUpdate();
-
-		if(i>0)
-		{
-			session.setAttribute("delmsg","Category deleted scuccessfully");	
-			response.sendRedirect("manage-books.jsp");
-		}
-	}
-
 
 %>
 <!DOCTYPE html>
@@ -129,6 +114,8 @@ else
 		</tr>
 <% 	cnt=cnt+1;
 	} 
+	
+	ps.close();
 %>                                      
                                     </tbody>
                                 </table>

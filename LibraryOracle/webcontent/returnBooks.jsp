@@ -40,10 +40,12 @@ else
 		ps.setInt(3,rstatus);
 		ps.setInt(4,rid);
 		int i=ps.executeUpdate();
-
+		
 		session.setAttribute("msg","Book Returned successfully");
 		response.sendRedirect("issued-books.jsp");
-}
+		ps.close();
+
+	}
 %>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -61,38 +63,7 @@ else
     <link href="assets/css/style.css" rel="stylesheet" />
     <!-- GOOGLE FONT -->
     <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
-<script>
-// function for get student name
-function getstudent() {
-$("#loaderIcon").show();
-jQuery.ajax({
-url: "get_student.jsp",
-data:'studentid='+$("#studentid").val(),
-type: "POST",
-success:function(data){
-$("#get_student_name").html(data);
-$("#loaderIcon").hide();
-},
-error:function (){}
-});
-}
 
-//function for book details
-function getbook() {
-$("#loaderIcon").show();
-jQuery.ajax({
-url: "get_book.jsp",
-data:'bookid='+$("#bookid").val(),
-type: "POST",
-success:function(data){
-$("#get_book_name").html(data);
-$("#loaderIcon").hide();
-},
-error:function (){}
-});
-}
-
-</script> 
 <style type="text/css">
   .others{
     color:red;
@@ -191,7 +162,11 @@ if(rs.getString("fine")==null)
 <button type="submit" name="return" id="submit" class="btn btn-info">Return Book </button>
 </form>
 
-<% }} %>
+<% }
+ }
+	ps.close();
+	
+%>
 </div>
                                     
                             </div>

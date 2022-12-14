@@ -36,7 +36,7 @@ if(login!=null)
 		{
 			out.println("<script>alert('Invalid Details');</script>");
 		}
-	
+	rs.close();
 }
 %>
 <!DOCTYPE html>
@@ -80,7 +80,7 @@ if(login!=null)
 <form role="form" method="post">
 
 <div class="form-group">
-<label>Enter Username</label>
+<label>Enter User name</label>
 <input class="form-control" type="text" name="username" autocomplete="off" required />
 </div>
 <div class="form-group">
@@ -108,6 +108,6 @@ if(login!=null)
     <script src="assets/js/bootstrap.js"></script>
       <!-- CUSTOM SCRIPTS  -->
     <script src="assets/js/custom.js"></script>
-</script>
+
 </body>
 </html>

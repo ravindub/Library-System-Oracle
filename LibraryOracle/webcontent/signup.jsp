@@ -67,7 +67,7 @@ if(signup!=null)
 		{
 			out.println("<script>alert('Something went wrong. Please try again');</script>");
 		}
-	
+	ps.close();
 }
 %>
 

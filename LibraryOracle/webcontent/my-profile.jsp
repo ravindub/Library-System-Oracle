@@ -42,6 +42,8 @@ else
 		ps.setString(3,getDate());
 		ps.setString(4,sid);
 		ps.executeUpdate();
+		
+		ps.close();
 
 		out.println("<script>alert('Your profile has been updated')</script>");
 	}	
@@ -58,7 +60,7 @@ else
     <!--[if IE]>
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <![endif]-->
-    <title>ABC Library | Student Signup</title>
+    <title>ABC Library | Student Sign up</title>
     <!-- BOOTSTRAP CORE STYLE  -->
     <link href="assets/css/bootstrap.css" rel="stylesheet" />
     <!-- FONT AWESOME STYLE  -->
@@ -120,16 +122,7 @@ if(rs.next())
 	</div>
 	<%}%>
 
-	<div class="form-group">
-	<label>Profile Status : </label>
-	<% if(rs.getInt("Status")==1){%>
-	<span style="color: green">Active</span>
-	<% } else { %>
-	<span style="color: red">Blocked</span>
 
-	<% }%>
-
-	</div>
 
 
 	<div class="form-group">

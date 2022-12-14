@@ -66,7 +66,7 @@ else
 				response.sendRedirect("issued-books.jsp");
 			}
 		}	
-	
+		ps.close();
 	}
 else{
 	String sql = "SELECT * from tblbooks";

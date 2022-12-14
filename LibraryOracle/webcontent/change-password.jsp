@@ -45,6 +45,8 @@ else
 			error="Your current password is wrong";  
 			msg=null;
 		}
+		
+		ps.close();
 	}
 
 %>
