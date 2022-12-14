@@ -108,8 +108,8 @@ CREATE TABLE tblissuedbookdetails (
   id number(11) NOT NULL,
   BookId number(11) DEFAULT NULL,
   StudentID varchar2(150) DEFAULT NULL,
-  IssuesDate varchar2(20) NULL,
-  ReturnDate varchar2(20) NULL,
+  IssuesDate date NULL,
+  ReturnDate date NULL,
   RetrunStatus number(1) DEFAULT NULL,
   fine number(11) DEFAULT NULL
 )

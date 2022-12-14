@@ -1,10 +1,10 @@
-<%@page import="java.sql.*,java.text.DateFormat,java.text.SimpleDateFormat,java.util.Date" import="com.library.db.dbConnect"%>
+<%@page import="java.sql.*,java.text.DateFormat,java.text.SimpleDateFormat,java.util.Date,java.time.LocalDate" import="com.library.db.dbConnect"%>
 <%!
 	public static String getDate()
     
 	{
         
-		DateFormat df=new SimpleDateFormat("d-MMM-yyyy");
+		DateFormat df=new SimpleDateFormat("yyyy-MM-dd");
         
 		String exam_date=df.format(new Date());
          
@@ -27,6 +27,7 @@ if(session.getAttribute("login")==null)
 }
 else
 { 
+	LocalDate date = LocalDate.now();
 	String ret=request.getParameter("return");
 	if(ret!=null)
 	{
@@ -36,7 +37,7 @@ else
 		String sql="update tblissuedbookdetails set fine=?,ReturnDate=?,RetrunStatus=? where id=?";
 		ps=conn.prepareStatement(sql);
 		ps.setInt(1,fine);
-		ps.setString(2,getDate());
+		ps.setDate(2,java.sql.Date.valueOf(date));
 		ps.setInt(3,rstatus);
 		ps.setInt(4,rid);
 		int i=ps.executeUpdate();
@@ -128,19 +129,19 @@ Issued Book Details
 
 <div class="form-group">
 <label>Book Issued Date :</label>
-<%=rs.getString("IssuesDate")%>
+<%=rs.getDate("IssuesDate")%>
 </div>
 
 
 <div class="form-group">
 <label>Book Returned Date :</label>
-<% if(rs.getString("ReturnDate")==null)
+<% if(rs.getDate("ReturnDate")==null)
                                             {
                                                 out.println("Not Return Yet");
                                             } else {
 
 
-                                            out.println(rs.getString("ReturnDate"));
+                                            out.println(rs.getDate("ReturnDate"));
 }
                                             %>
 </div>

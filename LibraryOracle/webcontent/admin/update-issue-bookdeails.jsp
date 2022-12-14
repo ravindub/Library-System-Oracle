@@ -4,13 +4,15 @@
     
 	{
         
-		DateFormat df=new SimpleDateFormat("d-MMM-yyyy");
+		DateFormat df=new SimpleDateFormat("yyyy-MM-dd");
         
 		String exam_date=df.format(new Date());
          
 		return exam_date;
     
 	}
+
+	
 %>
 <%
 	PreparedStatement ps;
@@ -26,7 +28,8 @@ if(session.getAttribute("alogin")==null)
 	response.sendRedirect("../index.jsp");
 }
 else
-{ 
+{ 	
+	
 	String ret=request.getParameter("return");
 	if(ret!=null)
 	{

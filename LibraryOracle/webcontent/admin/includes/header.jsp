@@ -57,8 +57,9 @@
                                 </ul>
                             </li>
                              <li><a href="reg-students.jsp">Reg Students</a></li>
-                    
-  <li><a href="change-password.jsp">Change Password</a></li>
+                    		<li><a href="loanHistory.jsp">Loan History</a></li>
+                    		 <li><a href="fines.jsp">Fines</a></li>
+ 							 <li><a href="change-password.jsp">Change Password</a></li>
                         </ul>
                     </div>
                 </div>

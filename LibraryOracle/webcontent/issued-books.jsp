@@ -87,8 +87,8 @@ else
 		<td class="center"><%=cnt%></td>
 		<td class="center"><%=rs.getString("BookName")%></td>
 		<td class="center"><%=rs.getString("ISBNNumber")%></td>
-		<td class="center"><%=rs.getString("IssuesDate")%></td>
-		<td class="center"><%	if(rs.getString("ReturnDate")==null)
+		<td class="center"><%=rs.getDate("IssuesDate")%></td>
+		<td class="center"><%	if(rs.getDate("ReturnDate")==null)
 					{
 				   %>
                                             <span style="color:red">
@@ -99,7 +99,7 @@ else
 				    	{ 
 				    %>
 
-                                            <%=rs.getString("ReturnDate")%>
+                                            <%=rs.getDate("ReturnDate")%>
 
                                     <%  } 
 				

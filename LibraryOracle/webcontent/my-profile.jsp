@@ -5,7 +5,7 @@
     
 	{
         
-		DateFormat df=new SimpleDateFormat("d-MMM-yyyy");
+		DateFormat df=new SimpleDateFormat("yyyy-MM-dd");
         
 		String exam_date=df.format(new Date());
          

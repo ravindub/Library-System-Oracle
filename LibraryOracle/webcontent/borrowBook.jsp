@@ -1,16 +1,6 @@
-<%@page import="java.sql.*,java.text.DateFormat,java.text.SimpleDateFormat,java.util.Date" import="com.library.db.dbConnect"%>
+<%@page import="java.sql.*,java.text.DateFormat,java.text.SimpleDateFormat,java.util.Date,java.time.LocalDate" import="com.library.db.dbConnect" %>
 <%!
-	public static String getDate()
-    
-	{
-        
-		DateFormat df=new SimpleDateFormat("d-MMM-yyyy");
-        
-		String exam_date=df.format(new Date());
-         
-		return exam_date;
-    
-	}
+	
 %>
 <%
 		PreparedStatement ps;
@@ -31,6 +21,7 @@ if(session.getAttribute("login")==null)
 }
 else
 { 
+	LocalDate date = LocalDate.now();
 	String issue=request.getParameter("issue");
 	if(issue!=null)
 	{
@@ -51,7 +42,7 @@ else
 			ps=conn.prepareStatement(sql);
 			ps.setString(1,studentid);
 			ps.setInt(2,rs1.getInt("id"));
-			ps.setString(3,getDate());
+			ps.setDate(3,java.sql.Date.valueOf(date));
 			int i=ps.executeUpdate();
 		
 		
