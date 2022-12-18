@@ -86,12 +86,12 @@ String sid = rs.getString("StudentId");
 
 <div class="form-group">
 <label>From<span style="color:red;">*</span></label>
-<input class="form-control" type="date" id="from" name="from" required>
+<input class="form-control" type="date" id="from" name="from" min="1900-01-01" max="2200-01-01" required>
 </div>
 
 <div class="form-group">
 <label>To<span style="color:red;">*</span></label>
-<input class="form-control" type="date" id="to" name="to" required>
+<input class="form-control" type="date" id="to" name="to" min="1900-01-01" max="2200-01-01" required>
 </div>
 
 <button type="submit" name="genReport" value="genReport" id="submit" class="btn btn-info">Generate Report </button>
@@ -102,6 +102,25 @@ String sid = rs.getString("StudentId");
                             </div>
 
         </div>
+        
+    <%
+        String sid=request.getParameter("stdname");
+    	String from=request.getParameter("from");
+    	String to=request.getParameter("to");
+    	
+
+
+    	if(from != null && to != null){
+    		String sql2 = "SELECT tblbooks.BookName,tblbooks.ISBNNumber,tblissuedbookdetails.IssuesDate,tblissuedbookdetails.fine,tblissuedbookdetails.ReturnDate,tblissuedbookdetails.id as rid from  tblissuedbookdetails join tblstudents on tblstudents.StudentId=tblissuedbookdetails.StudentId join tblbooks on tblbooks.id=tblissuedbookdetails.BookId where tblissuedbookdetails.StudentId=?  and (tblissuedbookdetails.IssuesDate between ? and ?) order by tblissuedbookdetails.id desc";
+    		ps=conn.prepareStatement(sql2,ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE);
+    		ps.setString(1,sid);
+    		ps.setDate(2,java.sql.Date.valueOf(from));
+    		ps.setDate(3,java.sql.Date.valueOf(to));
+    		rs=ps.executeQuery();
+    	
+        
+        
+     %>
             <div class="row">
                 <div class="col-md-12">
                     <!-- Advanced Tables -->
@@ -120,22 +139,16 @@ String sid = rs.getString("StudentId");
                                             <th>ISBN </th>
                                             <th>Issued Date</th>
                                             <th>Return Date</th>
-                                            <th>Action</th>
+                                            <th>Fine(LKR)</th>
                                         </tr>
                                     </thead>
                                     <tbody>
 <%
-	String sid=request.getParameter("stdname");
-
-
-	String sql2 = "SELECT tblbooks.BookName,tblbooks.ISBNNumber,tblissuedbookdetails.IssuesDate,tblissuedbookdetails.ReturnDate,tblissuedbookdetails.id as rid from  tblissuedbookdetails join tblstudents on tblstudents.StudentId=tblissuedbookdetails.StudentId join tblbooks on tblbooks.id=tblissuedbookdetails.BookId where tblissuedbookdetails.StudentId=?  and (tblissuedbookdetails.IssuesDate between ? and ?) order by tblissuedbookdetails.id desc";
-	ps=conn.prepareStatement(sql2,ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE);
-	ps.setString(1,sid);
-	ps.setDate(2,java.sql.Date.valueOf("2021-11-25"));
-	ps.setDate(3,java.sql.Date.valueOf("2022-12-16"));
 	
-	rs=ps.executeQuery();
-	
+		
+		
+		
+		
 	int cnt=1;
 while(rs.next())
 {
@@ -149,20 +162,25 @@ while(rs.next())
                                             <td class="center"><%=rs.getDate("IssuesDate")%></td>
                                             <td class="center"><% if(rs.getDate("ReturnDate")==null)
                                             {
-                                                out.println("Not Return Yet");
+                                                out.println("Not Returned Yet");
                                             } else {
 
-
-                                            out.println(rs.getDate("ReturnDate"));
-						}
+                                            	out.println(rs.getDate("ReturnDate"));
+						                     }
                                             %></td>
-                                            <td class="center">
+                                            <td class="center"><% if(rs.getString("fine")==null)
+                                            {
+                                                out.println("N/A");
+                                            } else {
 
-                                            <a href="update-issue-bookdeails.jsp?rid=<%=rs.getInt("rid")%>"><button class="btn btn-primary"><i class="fa fa-edit "></i> Edit</button> 
-                                         
+                                            	out.println(rs.getString("fine")); 
+						                     }
+                                            %>
+													
+                                          
                                             </td>
                                         </tr>
-												 <% cnt=cnt+1;} %>                                      
+												 <% cnt=cnt+1;}  %>                                      
                                     </tbody>
                                 </table>
                             </div>
@@ -172,7 +190,7 @@ while(rs.next())
                     <!--End Advanced Tables -->
                 </div>
             </div>
-
+<%  } ps.close(); %>
 
             
     </div>
