@@ -128,7 +128,6 @@ if(delmsg!=null)
                                         <tr>
                                             <th>#</th>
                                             <th>Category</th>
-                                            <th>Status</th>
                                             <th>Creation Date</th>
                                             <th>Updation Date</th>
                                             <th>Action</th>
@@ -147,20 +146,17 @@ while(rs.next())
                                         <tr class="odd gradeX">
                                             <td class="center"><%=cnt%></td>
                                             <td class="center"><%=rs.getString("CategoryName")%></td>
-                                            <td class="center"><% if(rs.getInt("Status")==1) {%>
-                                            <a href="#" class="btn btn-success btn-xs">Active</a>
-                                            <% } else {%>
-                                            <a href="#" class="btn btn-danger btn-xs">Inactive</a>
-                                            <% } %></td>
                                             <td class="center"><%=rs.getString("CreationDate")%></td>
                                             <td class="center"><%=rs.getString("UpdationDate")%></td>
                                             <td class="center">
 
-                                            <a href="edit-category.jsp?catid=<%=rs.getInt("id")%>"><button class="btn btn-primary"><i class="fa fa-edit "></i> Edit</button> 
-                                          <a href="manage-categories.jsp?del=<%=rs.getInt("id")%>" onclick="return confirm('Are you sure you want to delete?');"" >  <button class="btn btn-danger"><i class="fa fa-pencil"></i> Delete</button>
+                                            <a href="edit-category.jsp?catid=<%=rs.getInt("id")%>"><button class="btn btn-primary"><i class="fa fa-edit "></i> Edit</button> </a>
+                                          <a href="manage-categories.jsp?del=<%=rs.getInt("id")%>" onclick="return confirm('Are you sure you want to delete?');" >  <button class="btn btn-danger"><i class="fa fa-pencil"></i> Delete</button></a>
                                             </td>
                                         </tr>
- <% cnt=cnt+1;} %>                                      
+ <% cnt=cnt+1;} 
+	ps.close();
+ %>                                      
                                     </tbody>
                                 </table>
                             </div>

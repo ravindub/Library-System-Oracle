@@ -24,7 +24,7 @@ else
 
 		session.setAttribute("delmsg","Author deleted scuccessfully");
 		response.sendRedirect("manage-authors.jsp");
-}
+	}
 
 
 %>
@@ -149,11 +149,13 @@ while(rs.next())
                                             <td class="center"><%=rs.getString("UpdationDate")%></td>
                                             <td class="center">
 
-                                            <a href="edit-author.jsp?athrid=<%=rs.getInt("id")%>"><button class="btn btn-primary"><i class="fa fa-edit "></i> Edit</button> 
-                                          <a href="manage-authors.jsp?del=<%=rs.getInt("id")%>" onclick="return confirm('Are you sure you want to delete?');"" >  <button class="btn btn-danger"><i class="fa fa-pencil"></i> Delete</button>
+                                            <a href="edit-author.jsp?athrid=<%=rs.getInt("id")%>"><button class="btn btn-primary"><i class="fa fa-edit "></i> Edit</button> </a>
+                                          <a href="manage-authors.jsp?del=<%=rs.getInt("id")%>" onclick="return confirm('Are you sure you want to delete?');" >  <button class="btn btn-danger"><i class="fa fa-pencil"></i> Delete</button></a>
                                             </td>
                                         </tr>
- <% cnt=cnt+1;} %>                                      
+ <% cnt=cnt+1;} 
+ 	ps.close();
+ %>                                      
                                     </tbody>
                                 </table>
                             </div>

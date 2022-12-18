@@ -49,14 +49,6 @@
                                 </ul>
                             </li>
 
-                           <li>
-                                <a href="#" class="dropdown-toggle" id="ddlmenuItem" data-toggle="dropdown"> Issue Books <i class="fa fa-angle-down"></i></a>
-                                <ul class="dropdown-menu" role="menu" aria-labelledby="ddlmenuItem">
-                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="issue-book.jsp">Issue New Book</a></li>
-                                     <li role="presentation"><a role="menuitem" tabindex="-1" href="manage-issued-books.jsp">Manage Issued Books</a></li>
-                                </ul>
-                            </li>
-                             <li><a href="reg-students.jsp">Reg Students</a></li>
                     		<li><a href="loanHistory.jsp">Loan History</a></li>
                     		 <li><a href="fines.jsp">Fines</a></li>
  							 <li><a href="change-password.jsp">Change Password</a></li>

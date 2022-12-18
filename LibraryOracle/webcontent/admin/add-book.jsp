@@ -42,7 +42,9 @@ if(add!=null)
 		session.setAttribute("error","Something went wrong. Please try again");
 		response.sendRedirect("manage-books.jsp");
 	}
+	
 
+	ps.close();
 }
 %>
 <!DOCTYPE html>
@@ -67,7 +69,7 @@ if(add!=null)
       <!------MENU SECTION START-->
 <jsp:include page="includes/header.jsp" />
 <!-- MENU SECTION END-->
-    <div class="content-wra
+   
     <div class="content-wrapper">
          <div class="container">
         <div class="row pad-botm">
@@ -78,7 +80,7 @@ if(add!=null)
 
 </div>
 <div class="row">
-<div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3"">
+<div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
 <div class="panel panel-info">
 <div class="panel-heading">
 Book Info
@@ -132,13 +134,14 @@ while(rs.next())
 <option value="<%=rs.getInt("id")%>"><%=rs.getString("AuthorName")%></option>
  <%
  } 
+
 %> 
 </select>
 </div>
 
 <div class="form-group">
 <label>ISBN Number<span style="color:red;">*</span></label>
-<input class="form-control" type="text" name="isbn"  required="required" autocomplete="off"  />
+<input class="form-control" type="number" name="isbn"  required="required" autocomplete="off"  />
 <p class="help-block">An ISBN is an International Standard Book Number.ISBN Must be unique</p>
 </div>
 

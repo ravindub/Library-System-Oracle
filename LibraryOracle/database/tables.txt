@@ -22,7 +22,7 @@ CREATE TABLE admin (
 --
 
 INSERT INTO admin (id, FullName, AdminEmail, UserName, Password, updationDate) VALUES
-(101, 'Tom Cruze', 'tomcruze@yahoo.com', 'admin', 'a111', '5-aug-2021');
+(101, 'admin', 'admin@gmail.com', 'admin', '1234', '9-dec-2022');
 
 -- --------------------------------------------------------
 
@@ -42,12 +42,11 @@ CREATE TABLE tblauthors (
 --
 
 INSERT INTO tblauthors (id, AuthorName, creationDate, UpdationDate) VALUES
-(1, 'Anuj kumar', '5-aug-2021', '5-aug-2021'),
-(2, 'Chetan Bhagatt', '5-aug-2021', '5-aug-2021'),
-(3, 'Anita Desai', '5-aug-2021', NULL),
-(4, 'HC Verma', '5-aug-2021', NULL),
-(5, 'R.D. Sharma ', '5-aug-2021', NULL),
-(9, 'fwdfrwer', '5-aug-2021', NULL);
+(65, 'George Orwell', '2022-12-18', '2022-12-18'),
+(66, 'Stephen Hawking', '2022-12-18', NULL),
+(67, 'Barbara W. Tuchman', '2022-12-18', NULL),
+(68, 'Bruno Munari', '2022-12-18', NULL),
+(69, 'Alex Michaelides ', '2022-12-18', NULL);
 
 -- --------------------------------------------------------
 
@@ -71,8 +70,8 @@ CREATE TABLE tblbooks (
 --
 
 INSERT INTO tblbooks (id, BookName, CatId, AuthorId, ISBNNumber, BookPrice, RegDate, UpdationDate) VALUES
-(1, 'PHP And MySql programming', 5, 1, 222333, 20, '5-aug-2021', '6-aug-2021'),
-(3, 'physics', 6, 4, 1111, 15, '5-aug-2021', '7-aug-2021');
+(45, 'Nineteen Eighty-Four', 55, 65, 1978658, 250, '2022-12-18', '2022-12-18'),
+(46, 'A Brief History of Time', 54, 66, 187968, 500, '2022-12-18', '2022-12-18');
 
 -- --------------------------------------------------------
 
@@ -93,10 +92,11 @@ CREATE TABLE tblcategory (
 --
 
 INSERT INTO tblcategory (id, CategoryName, Status, CreationDate, UpdationDate) VALUES
-(4, 'Romantic', 1, '5-aug-2021', '6-aug-2021'),
-(5, 'Technology', 1, '5-aug-2021', '6-aug-2021'),
-(6, 'Science', 1, '5-aug-2021', '7-aug-2021'),
-(7, 'Management', 0, '5-aug-2021', '8-aug-2021');
+(55, 'Fiction', 1, '2022-12-18',  NULL),
+(54, 'Science', 1, '2022-12-18',  NULL),
+(56, 'History', 1, '2022-12-18',  NULL),
+(57, 'Art', 1, '2022-12-18',  NULL),
+(58, 'Thriller', 1, '2022-12-18',  NULL);
 
 -- --------------------------------------------------------
 
@@ -119,12 +119,13 @@ CREATE TABLE tblissuedbookdetails (
 --
 
 INSERT INTO tblissuedbookdetails (id, BookId, StudentID, IssuesDate, ReturnDate, RetrunStatus, fine) VALUES
-(1, 1, 'SID002', '5-aug-2021', '6-aug-2021', 1, 0),
-(2, 1, 'SID002', '5-aug-2021', '7-aug-2021', 1, 5),
-(3, 3, 'SID002', '7-aug-2021', NULL, 0, NULL),
-(4, 3, 'SID002', '7-aug-2021', '5-aug-2021', 1, 2),
-(5, 1, 'SID009', '8-aug-2021', NULL, 0, NULL),
-(6, 3, 'SID011', '8-aug-2021', NULL, 0, NULL);
+(81, 47, 'SID022', '2022-12-18', '2022-12-18', 1, 100),
+(82, 46, 'SID022', '2022-12-18', NULL, 0, NULL),
+(83, 48, 'SID022', '2022-12-18',2022-12-18, 1, 120),
+(84, 45, 'SID025', '2022-12-18', NULL, 0, NULL),
+(85, 47, 'SID025', '2022-12-18',2022-12-18, 1, 43),
+(86, 49, 'SID025', '2022-12-18', NULL, 0, NULL),
+(87, 46, 'SID025', '2022-12-18', NULL, 0, NULL);
 
 -- --------------------------------------------------------
 
@@ -149,11 +150,11 @@ CREATE TABLE tblstudents (
 --
 
 INSERT INTO tblstudents (id, StudentId, FullName, EmailId, MobileNumber, Password, Status, RegDate, UpdationDate) VALUES
-(1, 'SID002', 'Andrew Braza', 'andrew1@gmail.com', '9865472555', 'a111', 1, '5-aug-2021', '5-aug-2021'),
-(4, 'SID005', 'John Roberts', 'john@yahoo.com', '8569710025', 'a111', 0, '5-aug-2021', '5-aug-2021'),
-(9, 'SID010', 'Rey Tejada', 'rey@gmail.com', '8585856224', 'a111', 1, '5-aug-2021', '5-aug-2021'),
-(10, 'SID011', 'Clide Louie', 'CLIDE@gmail.com', '4672423754', 'a111', 1, '5-aug-2021', '5-aug-2021'),
-(11, 'SID012', 'Clive Dela Cruz', 'clive21@yahoo.com', '0945208280', 'a111', 1, '5-aug-2021', NULL);
+(62, 'SID023', 'suren withana', 'suren@gmail.com	', '0774568897', '1234', 1, '2022-12-18', '2022-12-18'),
+(63, 'SID024', 'dilini priyamali', 'dilini@gmail.com', '0724597954', '1234', 1, '2022-12-18', NULL),
+(64, 'SID025', 'dilan kanishka', 'dilan@gmail.com', '0704897564', '1234', 1, '2022-12-18', NULL),
+(65, 'SID026', 'dasun shanaka', 'dasun@gmail.com', '0789584623', '1234', 1, '2022-12-18', NULL),
+(61, 'SID022', 'Kasun dilanka', 'kasun@gmail.com	', '0711234568', '1234', 1, '2022-12-18', NULL);
 
 --
 -- Indexes for dumped tables

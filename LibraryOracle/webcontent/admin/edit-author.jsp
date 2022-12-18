@@ -65,7 +65,7 @@ else
       <!------MENU SECTION START-->
 <jsp:include page="includes/header.jsp" />
 <!-- MENU SECTION END-->
-    <div class="content-wra
+    
     <div class="content-wrapper">
          <div class="container">
         <div class="row pad-botm">
@@ -76,7 +76,7 @@ else
 
 </div>
 <div class="row">
-<div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3"">
+<div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
 <div class="panel panel-info">
 <div class="panel-heading">
 Author Info
@@ -97,7 +97,10 @@ while(rs.next())
 {
        %>   
 <input class="form-control" type="text" name="author" value="<%=rs.getString("AuthorName")%>" required />
-<% } %>
+<% }
+ps.close();
+
+%>
 </div>
 
 <button type="submit" name="update" class="btn btn-info">Update </button>

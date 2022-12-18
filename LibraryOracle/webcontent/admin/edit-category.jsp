@@ -32,18 +32,18 @@ else
 	if(update!=null)
 	{
 		String category=request.getParameter("category");
-		String status=request.getParameter("status");
+		
 		String catid=request.getParameter("catid");
 
 		String sql="update  tblcategory set CategoryName=?,Status=?,UpdationDate=? where id=?";
 		ps=conn.prepareStatement(sql);
 		ps.setString(1,category);
-		ps.setInt(2,Integer.parseInt(status));
+		ps.setInt(2,1);
 		ps.setString(3,getDate());
 		ps.setInt(4,Integer.parseInt(catid));
 		int i=ps.executeUpdate();
 
-		session.setAttribute("updatemsg","Brand updated successfully");
+		session.setAttribute("updatemsg","Category updated successfully");
 		response.sendRedirect("manage-categories.jsp");
 }
 %>
@@ -69,7 +69,7 @@ else
       <!------MENU SECTION START-->
 <jsp:include page="includes/header.jsp" />
 <!-- MENU SECTION END-->
-    <div class="content-wra
+    
     <div class="content-wrapper">
          <div class="container">
         <div class="row pad-botm">
@@ -80,7 +80,7 @@ else
 
 </div>
 <div class="row">
-<div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3"">
+<div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
 <div class="panel panel-info">
 <div class="panel-heading">
 Category Info
@@ -104,33 +104,8 @@ Category Info
 <label>Category Name</label>
 <input class="form-control" type="text" name="category" value="<%=rs.getString("CategoryName")%>" required />
 </div>
-<div class="form-group">
-<label>Status</label>
-<% if(rs.getInt("Status")==1) {%>
- <div class="radio">
-<label>
-<input type="radio" name="status" id="status" value="1" checked="checked">Active
-</label>
-</div>
-<div class="radio">
-<label>
-<input type="radio" name="status" id="status" value="0">Inactive
-</label>
-</div>
-<% } else { %>
-<div class="radio">
-<label>
-<input type="radio" name="status" id="status" value="0" checked="checked">Inactive
-</label>
-</div>
- <div class="radio">
-<label>
-<input type="radio" name="status" id="status" value="1">Active
-</label>
-</div>
-<% } %>
-</div>
-<% } %>
+
+<% } ps.close(); %>
 <button type="submit" name="update" class="btn btn-info">Update </button>
 
                                     </form>

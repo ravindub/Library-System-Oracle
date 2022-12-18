@@ -28,29 +28,31 @@ if(session.getAttribute("alogin")==null)
 else
 {
 	String create=request.getParameter("create");
-if(create!=null)
-{
-	String category=request.getParameter("category");
-	String status=request.getParameter("status");
-	String sql="INSERT INTO  tblcategory(CategoryName,Status,CreationDate) VALUES(?,?,?)";
-	ps=conn.prepareStatement(sql);
-	ps.setString(1,category);
-	ps.setInt(2,Integer.parseInt(status));
-	ps.setString(3,getDate());
-	int i=ps.executeUpdate();
-
-
-	if(i==0)
+	if(create!=null)
 	{
-		session.setAttribute("error","Something went wrong. Please try again");
-		response.sendRedirect("manage-categories.jsp");
+		String category=request.getParameter("category");
+		String status=request.getParameter("status");
+		String sql="INSERT INTO  tblcategory(CategoryName,Status,CreationDate) VALUES(?,?,?)";
+		ps=conn.prepareStatement(sql);
+		ps.setString(1,category);
+		ps.setInt(2,1);
+		ps.setString(3,getDate());
+		int i=ps.executeUpdate();
+	
+	
+		if(i==0)
+		{
+			session.setAttribute("error","Something went wrong. Please try again");
+			response.sendRedirect("manage-categories.jsp");
+		}
+		else 
+		{
+			session.setAttribute("msg","Category Listed successfully");
+			response.sendRedirect("manage-categories.jsp");
+		}
+		
+		ps.close();
 	}
-	else 
-	{
-		session.setAttribute("msg","Brand Listed successfully");
-		response.sendRedirect("manage-categories.jsp");
-	}
-}
 %>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -74,7 +76,7 @@ if(create!=null)
       <!------MENU SECTION START-->
 <jsp:include page="includes/header.jsp" />
 <!-- MENU SECTION END-->
-    <div class="content-wra
+   
     <div class="content-wrapper">
          <div class="container">
         <div class="row pad-botm">
@@ -85,7 +87,7 @@ if(create!=null)
 
 </div>
 <div class="row">
-<div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3"">
+<div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
 <div class="panel panel-info">
 <div class="panel-heading">
 Category Info
@@ -96,20 +98,7 @@ Category Info
 <label>Category Name</label>
 <input class="form-control" type="text" name="category" autocomplete="off" required />
 </div>
-<div class="form-group">
-<label>Status</label>
- <div class="radio">
-<label>
-<input type="radio" name="status" id="status" value="1" checked="checked">Active
-</label>
-</div>
-<div class="radio">
-<label>
-<input type="radio" name="status" id="status" value="0">Inactive
-</label>
-</div>
 
-</div>
 <button type="submit" name="create" value="create" class="btn btn-info">Create </button>
 
                                     </form>

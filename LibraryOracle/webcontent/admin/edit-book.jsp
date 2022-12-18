@@ -50,7 +50,9 @@ else
 		int i=ps.executeUpdate();
 
 		session.setAttribute("msg","Book Info updated successfully");
-		response.sendRedirect("manage-books.jsp");		
+		response.sendRedirect("manage-books.jsp");	
+		
+		ps.close();
 }
 %>
 <!DOCTYPE html>
@@ -75,7 +77,7 @@ else
       <!------MENU SECTION START-->
 <jsp:include page="includes/header.jsp" />
 <!-- MENU SECTION END-->
-    <div class="content-wra
+    
     <div class="content-wrapper">
          <div class="container">
         <div class="row pad-botm">
@@ -86,7 +88,7 @@ else
 
 </div>
 <div class="row">
-<div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3"">
+<div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
 <div class="panel panel-info">
 <div class="panel-heading">
 Book Info
@@ -167,12 +169,12 @@ while(rs2.next())
 
 <div class="form-group">
 <label>ISBN Number<span style="color:red;">*</span></label>
-<input class="form-control" type="text" name="isbn" value="<%=rs.getString("ISBNNumber")%>"  required="required" />
+<input class="form-control" type="number" name="isbn" value="<%=rs.getString("ISBNNumber")%>"  required="required" />
 <p class="help-block">An ISBN is an International Standard Book Number.ISBN Must be unique</p>
 </div>
 
  <div class="form-group">
- <label>Price in USD<span style="color:red;">*</span></label>
+ <label>Price in LKR<span style="color:red;">*</span></label>
  <input class="form-control" type="text" name="price" value="<%=rs.getString("BookPrice")%>"   required="required" />
  </div>
  <% } %>
