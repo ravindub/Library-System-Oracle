@@ -35,7 +35,7 @@ else
 		
 		String catid=request.getParameter("catid");
 
-		String sql="update  tblcategory set CategoryName=?,Status=?,UpdationDate=? where id=?";
+		String sql="update  categorytbl set CategoryName=?,Status=?,UpdationDate=? where id=?";
 		ps=conn.prepareStatement(sql);
 		ps.setString(1,category);
 		ps.setInt(2,1);
@@ -54,7 +54,7 @@ else
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>ABC Library | Edit Categories</title>
+    <title>Vision Library | Edit Categories</title>
     <!-- BOOTSTRAP CORE STYLE  -->
     <link href="assets/css/bootstrap.css" rel="stylesheet" />
     <!-- FONT AWESOME STYLE  -->
@@ -91,7 +91,7 @@ Category Info
 <%
 	String catid=request.getParameter("catid"); 
 
-	String sql="SELECT * from tblcategory where id=?";
+	String sql="SELECT * from categorytbl where id=?";
 	ps=conn.prepareStatement(sql,ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE);
 	ps.setInt(1,Integer.parseInt(catid));
 	rs=ps.executeQuery();

@@ -16,7 +16,7 @@ else
 {
 	
 	
-	String sql = "SELECT * from tblstudents";
+	String sql = "SELECT * from studentstbl";
 	ps=conn.prepareStatement(sql,ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE);
 	rs=ps.executeQuery();
 %>
@@ -27,7 +27,7 @@ else
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>ABC Library | Book Loan History</title>
+    <title>Vision Library | Book Loan History</title>
     <!-- BOOTSTRAP CORE STYLE  -->
     <link href="assets/css/bootstrap.css" rel="stylesheet" />
     <!-- FONT AWESOME STYLE  -->
@@ -111,7 +111,7 @@ String sid = rs.getString("StudentId");
 
 
     	if(from != null && to != null){
-    		String sql2 = "SELECT tblbooks.BookName,tblbooks.ISBNNumber,tblissuedbookdetails.IssuesDate,tblissuedbookdetails.fine,tblissuedbookdetails.ReturnDate,tblissuedbookdetails.id as rid from  tblissuedbookdetails join tblstudents on tblstudents.StudentId=tblissuedbookdetails.StudentId join tblbooks on tblbooks.id=tblissuedbookdetails.BookId where tblissuedbookdetails.StudentId=?  and (tblissuedbookdetails.IssuesDate between ? and ?) order by tblissuedbookdetails.id desc";
+    		String sql2 = "SELECT bookstbl.BookName,bookstbl.ISBNNumber,issuedbookstbl.IssuesDate,issuedbookstbl.fine,issuedbookstbl.ReturnDate,issuedbookstbl.id as rid from  issuedbookstbl join studentstbl on studentstbl.StudentId=issuedbookstbl.StudentId join bookstbl on bookstbl.id=issuedbookstbl.BookId where issuedbookstbl.StudentId=?  and (issuedbookstbl.IssuesDate between ? and ?) order by issuedbookstbl.id desc";
     		ps=conn.prepareStatement(sql2,ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE);
     		ps.setString(1,sid);
     		ps.setDate(2,java.sql.Date.valueOf(from));

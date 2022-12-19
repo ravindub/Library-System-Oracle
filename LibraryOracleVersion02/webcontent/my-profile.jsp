@@ -35,7 +35,7 @@ else
 		String fname=request.getParameter("fullanme");
 		String mobileno=request.getParameter("mobileno");
 
-		String sql="update tblstudents set FullName=?,MobileNumber=?,UpdationDate=? where StudentId=?";
+		String sql="update studentstbl set FullName=?,MobileNumber=?,UpdationDate=? where StudentId=?";
 		ps=conn.prepareStatement(sql);
 		ps.setString(1,fname);
 		ps.setString(2,mobileno);
@@ -60,7 +60,7 @@ else
     <!--[if IE]>
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <![endif]-->
-    <title>ABC Library | Student Sign up</title>
+    <title>Vision Library | Student Sign up</title>
     <!-- BOOTSTRAP CORE STYLE  -->
     <link href="assets/css/bootstrap.css" rel="stylesheet" />
     <!-- FONT AWESOME STYLE  -->
@@ -95,7 +95,7 @@ else
                             <form name="signup" method="post">
 <%
 String sid=(String)session.getAttribute("stdid");
-String sql="SELECT StudentId,FullName,EmailId,MobileNumber,RegDate,UpdationDate,Status from  tblstudents  where StudentId=? ";
+String sql="SELECT StudentId,FullName,EmailId,MobileNumber,RegDate,UpdationDate,Status from  studentstbl  where StudentId=? ";
 ps=conn.prepareStatement(sql,ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE);
 ps.setString(1,sid);
 rs=ps.executeQuery();

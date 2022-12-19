@@ -17,7 +17,7 @@ else
 	String id=request.getParameter("del");
 	if(id!=null)
 	{
-		String sql = "delete from tblauthors  WHERE id=?";
+		String sql = "delete from authortbl  WHERE id=?";
 		ps=conn.prepareStatement(sql);
 		ps.setInt(1,Integer.parseInt(id));
 		ps.executeUpdate();
@@ -35,7 +35,7 @@ else
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>ABC Library | Manage Authors</title>
+    <title>Vision Library | Manage Authors</title>
     <!-- BOOTSTRAP CORE STYLE  -->
     <link href="assets/css/bootstrap.css" rel="stylesheet" />
     <!-- FONT AWESOME STYLE  -->
@@ -135,7 +135,7 @@ if(delmsg!=null)
                                     </thead>
                                     <tbody>
 <% 
-	String sql = "SELECT * from  tblauthors";
+	String sql = "SELECT * from  authortbl";
 	ps=conn.prepareStatement(sql,ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE);
 	rs=ps.executeQuery();
 

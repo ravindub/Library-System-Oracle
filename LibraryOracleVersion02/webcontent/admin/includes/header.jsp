@@ -8,7 +8,7 @@
                 </button>
                 <a class="navbar-brand">
 
-                    <img src="assets/img/logo1.png" height=60 />
+                    <img src="assets/img/logo2.png" height=60 />
                 </a>
 
             </div>
@@ -26,6 +26,9 @@
                     <div class="navbar-collapse collapse ">
                         <ul id="menu-top" class="nav navbar-nav navbar-right">
                             <li><a href="dashboard.jsp" class="menu-top-active">DASHBOARD</a></li>
+                           
+                           	<li><a href="loanHistory.jsp">Loan History</a></li>
+                    		 <li><a href="fines.jsp">Fines</a></li>
                            
                             <li>
                                 <a href="#" class="dropdown-toggle" id="ddlmenuItem" data-toggle="dropdown"> Categories <i class="fa fa-angle-down"></i></a>
@@ -49,8 +52,7 @@
                                 </ul>
                             </li>
 
-                    		<li><a href="loanHistory.jsp">Loan History</a></li>
-                    		 <li><a href="fines.jsp">Fines</a></li>
+                    		
  							 <li><a href="change-password.jsp">Change Password</a></li>
                         </ul>
                     </div>

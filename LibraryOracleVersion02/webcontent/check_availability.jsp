@@ -20,7 +20,7 @@ if(emailid!=null) {
 	}
 	else 
 	{
-		String sql ="SELECT EmailId FROM tblstudents WHERE EmailId=?";
+		String sql ="SELECT EmailId FROM studentstbl WHERE EmailId=?";
 		ps=conn.prepareStatement(sql);
 		ps.setString(1,emailid);
 		rs=ps.executeQuery();	

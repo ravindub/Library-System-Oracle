@@ -22,15 +22,15 @@ CREATE TABLE admin (
 --
 
 INSERT INTO admin (id, FullName, AdminEmail, UserName, Password, updationDate) VALUES
-(101, 'admin', 'admin@gmail.com', 'admin', '1234', '9-dec-2022');
+(101, 'admin', 'geethika@gmail.com	', 'admin', '0000', '19-dec-2022');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table tblauthors
+-- Table structure for table authortbl
 --
 
-CREATE TABLE tblauthors (
+CREATE TABLE authortbl (
   id number(11) NOT NULL,
   AuthorName varchar2(159) DEFAULT NULL,
   creationDate varchar2(20) NULL,
@@ -38,23 +38,22 @@ CREATE TABLE tblauthors (
 )
 
 --
--- Dumping data for table tblauthors
+-- Dumping data for table authortbl
 --
 
-INSERT INTO tblauthors (id, AuthorName, creationDate, UpdationDate) VALUES
-(65, 'George Orwell', '2022-12-18', '2022-12-18'),
-(66, 'Stephen Hawking', '2022-12-18', NULL),
-(67, 'Barbara W. Tuchman', '2022-12-18', NULL),
-(68, 'Bruno Munari', '2022-12-18', NULL),
-(69, 'Alex Michaelides ', '2022-12-18', NULL);
+INSERT INTO authortbl (id, AuthorName, creationDate, UpdationDate) VALUES
+(81, 'Rachel Carson', '2022-12-19', '2022-12-19'),
+(82, 'Steve McConnell', '2022-12-19', NULL),
+(83, 'Jan Spiller', '2022-12-19', NULL),
+(84, 'Ralph Ellison', '2022-12-19', NULL);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table tblbooks
+-- Table structure for table bookstbl
 --
 
-CREATE TABLE tblbooks (
+CREATE TABLE bookstbl (
   id number(11) NOT NULL,
   BookName varchar2(255) DEFAULT NULL,
   CatId number(11) DEFAULT NULL,
@@ -66,20 +65,20 @@ CREATE TABLE tblbooks (
 ) 
 
 --
--- Dumping data for table tblbooks
+-- Dumping data for table bookstbl
 --
 
-INSERT INTO tblbooks (id, BookName, CatId, AuthorId, ISBNNumber, BookPrice, RegDate, UpdationDate) VALUES
-(45, 'Nineteen Eighty-Four', 55, 65, 1978658, 250, '2022-12-18', '2022-12-18'),
-(46, 'A Brief History of Time', 54, 66, 187968, 500, '2022-12-18', '2022-12-18');
+INSERT INTO bookstbl (id, BookName, CatId, AuthorId, ISBNNumber, BookPrice, RegDate, UpdationDate) VALUES
+(61, 'Silent Spring', 61, 81, 325326523, 250, '2022-12-19', '2022-12-19'),
+(62, 'Code Complete', 62, 82, 43235646, 500, '2022-12-19', '2022-12-19');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table tblcategory
+-- Table structure for table categorytbl
 --
 
-CREATE TABLE tblcategory (
+CREATE TABLE categorytbl (
   id number(11) NOT NULL,
   CategoryName varchar2(150) DEFAULT NULL,
   Status number(1) DEFAULT NULL,
@@ -88,23 +87,22 @@ CREATE TABLE tblcategory (
 )
 
 --
--- Dumping data for table tblcategory
+-- Dumping data for table categorytbl
 --
 
-INSERT INTO tblcategory (id, CategoryName, Status, CreationDate, UpdationDate) VALUES
-(55, 'Fiction', 1, '2022-12-18',  NULL),
-(54, 'Science', 1, '2022-12-18',  NULL),
-(56, 'History', 1, '2022-12-18',  NULL),
-(57, 'Art', 1, '2022-12-18',  NULL),
-(58, 'Thriller', 1, '2022-12-18',  NULL);
+INSERT INTO categorytbl (id, CategoryName, Status, CreationDate, UpdationDate) VALUES
+(61, 'Science', 1, '2022-12-19',  NULL),
+(62, 'Programming', 1, '2022-12-19',  NULL),
+(63, 'Astrology', 1, '2022-12-19',  NULL),
+(64, 'Novels', 1, '2022-12-19',  NULL);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table tblissuedbookdetails
+-- Table structure for table issuedbookstbl
 --
 
-CREATE TABLE tblissuedbookdetails (
+CREATE TABLE issuedbookstbl (
   id number(11) NOT NULL,
   BookId number(11) DEFAULT NULL,
   StudentID varchar2(150) DEFAULT NULL,
@@ -115,25 +113,25 @@ CREATE TABLE tblissuedbookdetails (
 )
 
 --
--- Dumping data for table tblissuedbookdetails
+-- Dumping data for table issuedbookstbl
 --
 
-INSERT INTO tblissuedbookdetails (id, BookId, StudentID, IssuesDate, ReturnDate, RetrunStatus, fine) VALUES
-(81, 47, 'SID022', '2022-12-18', '2022-12-18', 1, 100),
-(82, 46, 'SID022', '2022-12-18', NULL, 0, NULL),
-(83, 48, 'SID022', '2022-12-18',2022-12-18, 1, 120),
-(84, 45, 'SID025', '2022-12-18', NULL, 0, NULL),
-(85, 47, 'SID025', '2022-12-18',2022-12-18, 1, 43),
-(86, 49, 'SID025', '2022-12-18', NULL, 0, NULL),
-(87, 46, 'SID025', '2022-12-18', NULL, 0, NULL);
+INSERT INTO issuedbookstbl (id, BookId, StudentID, IssuesDate, ReturnDate, RetrunStatus, fine) VALUES
+(101, 61, 'SID015', '2022-12-19', '2022-12-19', 1, 150),
+(102, 63, 'SID015', '2022-12-19', NULL, 0, NULL),
+(103, 62, 'SID015', '2022-12-19',2022-12-19, 1, 220),
+(104, 61, 'SID016', '2022-12-19', NULL, 0, NULL),
+(105, 62, 'SID016', '2022-12-19',2022-12-19, 1, 430),
+(106, 62, 'SID016', '2022-12-19', NULL, 0, NULL),
+(107, 64, 'SID016', '2022-12-19', NULL, 0, NULL);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table tblstudents
+-- Table structure for table studentstbl
 --
 
-CREATE TABLE tblstudents (
+CREATE TABLE studentstbl (
   id number(11) NOT NULL,
   StudentId varchar2(100) DEFAULT NULL,
   FullName varchar2(120) DEFAULT NULL,
@@ -146,15 +144,14 @@ CREATE TABLE tblstudents (
 )
 
 --
--- Dumping data for table tblstudents
+-- Dumping data for table studentstbl
 --
 
-INSERT INTO tblstudents (id, StudentId, FullName, EmailId, MobileNumber, Password, Status, RegDate, UpdationDate) VALUES
-(62, 'SID023', 'suren withana', 'suren@gmail.com	', '0774568897', '1234', 1, '2022-12-18', '2022-12-18'),
-(63, 'SID024', 'dilini priyamali', 'dilini@gmail.com', '0724597954', '1234', 1, '2022-12-18', NULL),
-(64, 'SID025', 'dilan kanishka', 'dilan@gmail.com', '0704897564', '1234', 1, '2022-12-18', NULL),
-(65, 'SID026', 'dasun shanaka', 'dasun@gmail.com', '0789584623', '1234', 1, '2022-12-18', NULL),
-(61, 'SID022', 'Kasun dilanka', 'kasun@gmail.com	', '0711234568', '1234', 1, '2022-12-18', NULL);
+INSERT INTO studentstbl (id, StudentId, FullName, EmailId, MobileNumber, Password, Status, RegDate, UpdationDate) VALUES
+(81, 'SID015', 'nadini piyumali', 'nadini@gmail.com', '0716548945', '0000', 1, '2022-12-19', '2022-12-19'),
+(82, 'SID016', 'chathura madusanka', 'chathura@gmail.com', '0774581954', '0000', 1, '2022-12-19', NULL),
+(83, 'SID017', 'saduni hansika', 'saduni@gmail.com	', '0785456885', '0000', 1, '2022-12-19', NULL),
+(84, 'SID018', 'lakshika perera', 'lakshika@gmail.com', '0758498288', '0000', 1, '2022-12-19', NULL);
 
 --
 -- Indexes for dumped tables
@@ -167,36 +164,36 @@ ALTER TABLE admin
   ADD PRIMARY KEY (id);
 
 --
--- Indexes for table tblauthors
+-- Indexes for table authortbl
 --
-ALTER TABLE tblauthors
+ALTER TABLE authortbl
   ADD PRIMARY KEY (id);
 
 --
--- Indexes for table tblbooks
+-- Indexes for table bookstbl
 --
-ALTER TABLE tblbooks
+ALTER TABLE bookstbl
   ADD PRIMARY KEY (id);
 
 --
--- Indexes for table tblcategory
+-- Indexes for table categorytbl
 --
-ALTER TABLE tblcategory
+ALTER TABLE categorytbl
   ADD PRIMARY KEY (id);
 
 --
--- Indexes for table tblissuedbookdetails
+-- Indexes for table issuedbookstbl
 --
-ALTER TABLE tblissuedbookdetails
+ALTER TABLE issuedbookstbl
   ADD PRIMARY KEY (id);
 
 --
--- Indexes for table tblstudents
+-- Indexes for table studentstbl
 --
-ALTER TABLE tblstudents
+ALTER TABLE studentstbl
   ADD PRIMARY KEY (id),
 
-ALTER TABLE tblstudents
+ALTER TABLE studentstbl
 ADD CONSTRAINT sid_unique UNIQUE (StudentId)
 
 --
@@ -220,13 +217,13 @@ END;
 
 
 --
--- AUTO_INCREMENT for table tblauthors
+-- AUTO_INCREMENT for table authortbl
 --
 CREATE SEQUENCE author_sequence
 
 
-CREATE OR REPLACE TRIGGER tblauthors_on_insert
-  BEFORE INSERT ON tblauthors
+CREATE OR REPLACE TRIGGER authortbl_on_insert
+  BEFORE INSERT ON authortbl
   FOR EACH ROW
 BEGIN
   SELECT author_sequence.nextval
@@ -236,13 +233,13 @@ END;
 
 
 --
--- AUTO_INCREMENT for table tblbooks
+-- AUTO_INCREMENT for table bookstbl
 --
 CREATE SEQUENCE book_sequence
 
 
-CREATE OR REPLACE TRIGGER tblbooks_on_insert
-  BEFORE INSERT ON tblbooks
+CREATE OR REPLACE TRIGGER bookstbl_on_insert
+  BEFORE INSERT ON bookstbl
   FOR EACH ROW
 BEGIN
   SELECT book_sequence.nextval
@@ -252,13 +249,13 @@ END;
 
 
 --
--- AUTO_INCREMENT for table tblcategory
+-- AUTO_INCREMENT for table categorytbl
 --
 CREATE SEQUENCE category_sequence
 
 
-CREATE OR REPLACE TRIGGER tblcategory_on_insert
-  BEFORE INSERT ON tblcategory
+CREATE OR REPLACE TRIGGER categorytbl_on_insert
+  BEFORE INSERT ON categorytbl
   FOR EACH ROW
 BEGIN
   SELECT category_sequence.nextval
@@ -267,13 +264,13 @@ BEGIN
 END;
 
 --
--- AUTO_INCREMENT for table tblissuedbookdetails
+-- AUTO_INCREMENT for table issuedbookstbl
 --
 CREATE SEQUENCE issuedbook_sequence
 
 
-CREATE OR REPLACE TRIGGER tblissuedbookdetails_on_insert
-  BEFORE INSERT ON tblissuedbookdetails
+CREATE OR REPLACE TRIGGER issuedbookstbl_on_insert
+  BEFORE INSERT ON issuedbookstbl
   FOR EACH ROW
 BEGIN
   SELECT issuedbook_sequence.nextval
@@ -283,13 +280,13 @@ END;
 
 
 --
--- AUTO_INCREMENT for table tblstudents
+-- AUTO_INCREMENT for table studentstbl
 --
 CREATE SEQUENCE student_sequence
 
 
-CREATE OR REPLACE TRIGGER tblstudents_on_insert
-  BEFORE INSERT ON tblstudents
+CREATE OR REPLACE TRIGGER studentstbl_on_insert
+  BEFORE INSERT ON studentstbl
   FOR EACH ROW
 BEGIN
   SELECT student_sequence.nextval

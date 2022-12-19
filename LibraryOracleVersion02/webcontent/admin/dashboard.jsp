@@ -24,7 +24,7 @@ else{
     <!--[if IE]>
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <![endif]-->
-    <title>ABC Library | Admin Dash Board</title>
+    <title>Vision Library | Admin Dash Board</title>
     <!-- BOOTSTRAP CORE STYLE  -->
     <link href="assets/css/bootstrap.css" rel="stylesheet" />
     <!-- FONT AWESOME STYLE  -->
@@ -53,9 +53,9 @@ else{
 
  <div class="col-md-3 col-sm-3 col-xs-6">
                       <div class="alert alert-success back-widget-set text-center">
-                            <i class="fa fa-book fa-5x"></i>
+                            
 <%
-String sql ="SELECT id from tblbooks ";
+String sql ="SELECT id from bookstbl ";
 ps=conn.prepareStatement(sql,ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE);
 rs=ps.executeQuery();
 
@@ -73,9 +73,9 @@ int listdbooks=rs.getRow();
             
                  <div class="col-md-3 col-sm-3 col-xs-6">
                       <div class="alert alert-info back-widget-set text-center">
-                            <i class="fa fa-bars fa-5x"></i>
+                            
 <% 
-String sql1 ="SELECT id from tblissuedbookdetails ";
+String sql1 ="SELECT id from issuedbookstbl ";
 ps=conn.prepareStatement(sql1,ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE);
 rs=ps.executeQuery();
 
@@ -90,10 +90,10 @@ int issuedbooks=rs.getRow();
              
                <div class="col-md-3 col-sm-3 col-xs-6">
                       <div class="alert alert-warning back-widget-set text-center">
-                            <i class="fa fa-recycle fa-5x"></i>
+                            
 <%
 int status=1;
-String sql2 ="SELECT id from tblissuedbookdetails where RetrunStatus=?";
+String sql2 ="SELECT id from issuedbookstbl where RetrunStatus=?";
 ps=conn.prepareStatement(sql2,ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE);
 ps.setInt(1,status);
 rs=ps.executeQuery();
@@ -108,9 +108,9 @@ int returnedbooks=rs.getRow();
                     </div>
                <div class="col-md-3 col-sm-3 col-xs-6">
                       <div class="alert alert-danger back-widget-set text-center">
-                            <i class="fa fa-users fa-5x"></i>
+                            
 <% 
-String sql3 ="SELECT id from tblstudents ";
+String sql3 ="SELECT id from studentstbl ";
 ps=conn.prepareStatement(sql3,ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE);
 rs=ps.executeQuery();
 
@@ -124,51 +124,7 @@ int regstds=rs.getRow();
 
         </div>
 
-
-
- <div class="row">
-
- <div class="col-md-3 col-sm-3 col-xs-6">
-                      <div class="alert alert-success back-widget-set text-center">
-                            <i class="fa fa-user fa-5x"></i>
-<% 
-String sql4 ="SELECT id from tblauthors ";
-ps=conn.prepareStatement(sql4,ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE);
-rs=ps.executeQuery();
-
-rs.last();
-int listdathrs=rs.getRow();
-%>
-
-
-                            <h3><%=listdathrs%></h3>
-                      Listed Authors
-                        </div>
-                    </div>
-
-            
-                 <div class="col-md-3 col-sm-3 rscol-xs-6">
-                      <div class="alert alert-info back-widget-set text-center">
-                            <i class="fa fa-file-archive-o fa-5x"></i>
-<% 
-String sql5 ="SELECT id from tblcategory ";
-ps=conn.prepareStatement(sql5,ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE);
-rs=ps.executeQuery();
-
-rs.last();
-int listdcats=rs.getRow();
-
-ps.close();
-
-%>
-
-                            <h3><%=listdcats%> </h3>
-                           Listed Categories
-                        </div>
-                    </div>
-             
-
-        </div>             
+           
 
             
     </div>

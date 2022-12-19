@@ -14,7 +14,7 @@ if(login!=null)
 	
 		String email=request.getParameter("emailid");
 		String password=request.getParameter("password");
-		String sql ="SELECT EmailId,Password,StudentId,Status FROM tblstudents WHERE EmailId=? and Password=?";
+		String sql ="SELECT EmailId,Password,StudentId,Status FROM studentstbl WHERE EmailId=? and Password=?";
 		ps=conn.prepareStatement(sql,ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE);
 		ps.setString(1,email);
 		ps.setString(2,password);
@@ -56,7 +56,7 @@ if(login!=null)
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>ABC Library | </title>
+    <title>Vision Library | </title>
     <!-- BOOTSTRAP CORE STYLE  -->
     <link href="assets/css/bootstrap.css" rel="stylesheet" />
     <!-- FONT AWESOME STYLE  -->

@@ -38,7 +38,7 @@ else
 		String isbn=request.getParameter("isbn");
 		String price=request.getParameter("price");
 		String bookid=request.getParameter("bookid");
-		String sql="update  tblbooks set BookName=?,CatId=?,AuthorId=?,ISBNNumber=?,BookPrice=?,UpdationDate=? where id=?";
+		String sql="update  bookstbl set BookName=?,CatId=?,AuthorId=?,ISBNNumber=?,BookPrice=?,UpdationDate=? where id=?";
 		ps=conn.prepareStatement(sql);
 		ps.setString(1,bookname);
 		ps.setInt(2,Integer.parseInt(category));
@@ -62,7 +62,7 @@ else
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>ABC Library | Edit Book</title>
+    <title>Vision Library | Edit Book</title>
     <!-- BOOTSTRAP CORE STYLE  -->
     <link href="assets/css/bootstrap.css" rel="stylesheet" />
     <!-- FONT AWESOME STYLE  -->
@@ -97,7 +97,7 @@ Book Info
 <form role="form" method="post">
 <% 
 	int bookid=Integer.parseInt(request.getParameter("bookid"));
-	String sql = "SELECT tblbooks.BookName,tblcategory.CategoryName,tblcategory.id as cid,tblauthors.AuthorName,tblauthors.id as athrid,tblbooks.ISBNNumber,tblbooks.BookPrice,tblbooks.id as bookid from  tblbooks join tblcategory on tblcategory.id=tblbooks.CatId join tblauthors on tblauthors.id=tblbooks.AuthorId where tblbooks.id=?";
+	String sql = "SELECT bookstbl.BookName,categorytbl.CategoryName,categorytbl.id as cid,authortbl.AuthorName,authortbl.id as athrid,bookstbl.ISBNNumber,bookstbl.BookPrice,bookstbl.id as bookid from  bookstbl join categorytbl on categorytbl.id=bookstbl.CatId join authortbl on authortbl.id=bookstbl.AuthorId where bookstbl.id=?";
 	ps=conn.prepareStatement(sql,ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE);
 	ps.setInt(1,bookid);
 	rs=ps.executeQuery();
@@ -119,7 +119,7 @@ Book Info
 <option value="<%=rs.getString("cid")%>"> <% String catname=rs.getString("CategoryName"); out.println(catname); %></option>
 <% 
 int status=1;
-String sql1 = "SELECT * from  tblcategory where Status=?";
+String sql1 = "SELECT * from  categorytbl where Status=?";
 ps=conn.prepareStatement(sql1,ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE);
 ps.setInt(1,status);
 	rs1=ps.executeQuery();
@@ -147,7 +147,7 @@ ps.setInt(1,status);
 <option value="<%=rs.getString("athrid")%>"> <% String athrname=rs.getString("AuthorName"); out.println(athrname); %></option>
 <% 
 
-String sql2 = "SELECT * from  tblauthors ";
+String sql2 = "SELECT * from  authortbl ";
 ps=conn.prepareStatement(sql2,ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE);
 rs2=ps.executeQuery();
 

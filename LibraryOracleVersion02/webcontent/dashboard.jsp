@@ -20,7 +20,7 @@ else{
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>ABC Library | Student Dash Board</title>
+    <title>Vision Library | Student Dash Board</title>
     <!-- BOOTSTRAP CORE STYLE  -->
     <link href="assets/css/bootstrap.css" rel="stylesheet" />
     <!-- FONT AWESOME STYLE  -->
@@ -55,7 +55,7 @@ else{
                             <i class="fa fa-bars fa-5x"></i>
 <%
 String sid=(String)session.getAttribute("stdid");
-String sql1 ="SELECT id from tblissuedbookdetails where StudentID=?";
+String sql1 ="SELECT id from issuedbookstbl where StudentID=?";
 ps=conn.prepareStatement(sql1,ResultSet.TYPE_SCROLL_SENSITIVE,  
                      ResultSet.CONCUR_UPDATABLE);
 ps.setString(1,sid);

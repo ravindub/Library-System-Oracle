@@ -22,7 +22,7 @@ else
   	{
 		String password=request.getParameter("password");
 		String newpassword=request.getParameter("newpassword");
-		String sql ="SELECT Password FROM tblstudents WHERE EmailId=? and Password=?";
+		String sql ="SELECT Password FROM studentstbl WHERE EmailId=? and Password=?";
 		ps=conn.prepareStatement(sql);
 		ps.setString(1,email);
 		ps.setString(2,password);
@@ -31,7 +31,7 @@ else
 
 		if(rs.next())
 		{
-			String sql1="update tblstudents set Password=? where EmailId=?";
+			String sql1="update studentstbl set Password=? where EmailId=?";
 			ps=conn.prepareStatement(sql1);
 			ps.setString(1,newpassword);
 			ps.setString(2,email);
@@ -57,7 +57,7 @@ else
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>ABC Library | </title>
+    <title>Vision Library | </title>
     <!-- BOOTSTRAP CORE STYLE  -->
     <link href="assets/css/bootstrap.css" rel="stylesheet" />
     <!-- FONT AWESOME STYLE  -->

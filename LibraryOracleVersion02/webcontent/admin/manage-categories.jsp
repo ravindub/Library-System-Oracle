@@ -17,7 +17,7 @@ else
 if(id!=null)
 {
 
-	String sql = "delete from tblcategory  WHERE id=?";
+	String sql = "delete from categorytbl  WHERE id=?";
 	ps=conn.prepareStatement(sql);
 	ps.setInt(1,Integer.parseInt(id));
 	ps.executeUpdate();
@@ -36,7 +36,7 @@ if(id!=null)
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>ABC Library | Manage Categories</title>
+    <title>Vision Library | Manage Categories</title>
     <!-- BOOTSTRAP CORE STYLE  -->
     <link href="assets/css/bootstrap.css" rel="stylesheet" />
     <!-- FONT AWESOME STYLE  -->
@@ -135,7 +135,7 @@ if(delmsg!=null)
                                     </thead>
                                     <tbody>
 <%
-	String sql = "SELECT * from  tblcategory";
+	String sql = "SELECT * from  categorytbl";
 	ps=conn.prepareStatement(sql,ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE);
 	rs=ps.executeQuery();
 

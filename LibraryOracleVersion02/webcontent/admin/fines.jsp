@@ -17,7 +17,7 @@ else
 {
 	
 	
-	String sql = "SELECT * from tblstudents";
+	String sql = "SELECT * from studentstbl";
 	ps=conn.prepareStatement(sql,ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE);
 	rs=ps.executeQuery();
 %>
@@ -28,7 +28,7 @@ else
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>ABC Library | Fines</title>
+    <title>Vision Library | Fines</title>
     <!-- BOOTSTRAP CORE STYLE  -->
     <link href="assets/css/bootstrap.css" rel="stylesheet" />
     <!-- FONT AWESOME STYLE  -->
@@ -112,7 +112,7 @@ String sid = rs.getString("StudentId");
 
 
     	if(from != null && to != null){
-    		String sql2 = "SELECT sum(tblissuedbookdetails.fine) as fine,tblissuedbookdetails.StudentID,tblstudents.FullName,tblstudents.EmailId,tblstudents.MobileNumber from  tblissuedbookdetails join tblstudents on tblstudents.StudentId=tblissuedbookdetails.StudentId where tblstudents.StudentId=?  and (tblissuedbookdetails.IssuesDate between ? and ?) group by tblissuedbookdetails.StudentID,tblstudents.FullName,tblstudents.EmailId,tblstudents.MobileNumber";
+    		String sql2 = "SELECT sum(issuedbookstbl.fine) as fine,issuedbookstbl.StudentID,studentstbl.FullName,studentstbl.EmailId,studentstbl.MobileNumber from  issuedbookstbl join studentstbl on studentstbl.StudentId=issuedbookstbl.StudentId where studentstbl.StudentId=?  and (issuedbookstbl.IssuesDate between ? and ?) group by issuedbookstbl.StudentID,studentstbl.FullName,studentstbl.EmailId,studentstbl.MobileNumber";
     		ps=conn.prepareStatement(sql2,ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE);
     		ps.setString(1,sid);
     		ps.setDate(2,java.sql.Date.valueOf(from));

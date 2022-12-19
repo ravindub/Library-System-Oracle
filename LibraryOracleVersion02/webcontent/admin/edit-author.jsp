@@ -32,7 +32,7 @@ else
 		String athrid=request.getParameter("athrid");
 		String author=request.getParameter("author");
 
-		String sql="update  tblauthors set AuthorName=?,UpdationDate=? where id=?";
+		String sql="update  authortbl set AuthorName=?,UpdationDate=? where id=?";
 		ps=conn.prepareStatement(sql);
 		ps.setString(1,author);
 		ps.setString(2,getDate());
@@ -50,7 +50,7 @@ else
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>ABC Library | Add Author</title>
+    <title>Vision Library | Add Author</title>
     <!-- BOOTSTRAP CORE STYLE  -->
     <link href="assets/css/bootstrap.css" rel="stylesheet" />
     <!-- FONT AWESOME STYLE  -->
@@ -87,7 +87,7 @@ Author Info
 <label>Author Name</label>
 <% 
 String athrid=request.getParameter("athrid");
-String sql = "SELECT * from  tblauthors where id=?";
+String sql = "SELECT * from  authortbl where id=?";
 ps=conn.prepareStatement(sql,ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE);
 	ps.setInt(1,Integer.parseInt(athrid));
 	rs=ps.executeQuery();

@@ -47,7 +47,7 @@ if(signup!=null)
 		String email=request.getParameter("email"); 
 		String password=request.getParameter("password"); 
 		int status=1;
-		String sql="INSERT INTO  tblstudents(StudentId,FullName,MobileNumber,EmailId,Password,Status,RegDate) VALUES(?,?,?,?,?,?,?)";
+		String sql="INSERT INTO  studentstbl(StudentId,FullName,MobileNumber,EmailId,Password,Status,RegDate) VALUES(?,?,?,?,?,?,?)";
 		ps=conn.prepareStatement(sql);
 		ps.setString(1,studentId);
 		ps.setString(2,fname);
@@ -81,7 +81,7 @@ if(signup!=null)
     <!--[if IE]>
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <![endif]-->
-    <title>ABC Library | Student Sign up</title>
+    <title>Vision Library | Student Sign up</title>
     <!-- BOOTSTRAP CORE STYLE  -->
     <link href="assets/css/bootstrap.css" rel="stylesheet" />
     <!-- FONT AWESOME STYLE  -->

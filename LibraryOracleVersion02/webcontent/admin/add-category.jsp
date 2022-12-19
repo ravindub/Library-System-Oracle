@@ -32,7 +32,7 @@ else
 	{
 		String category=request.getParameter("category");
 		String status=request.getParameter("status");
-		String sql="INSERT INTO  tblcategory(CategoryName,Status,CreationDate) VALUES(?,?,?)";
+		String sql="INSERT INTO  categorytbl(CategoryName,Status,CreationDate) VALUES(?,?,?)";
 		ps=conn.prepareStatement(sql);
 		ps.setString(1,category);
 		ps.setInt(2,1);
@@ -61,7 +61,7 @@ else
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>ABC Library | Add Categories</title>
+    <title>Vision Library | Add Categories</title>
     <!-- BOOTSTRAP CORE STYLE  -->
     <link href="assets/css/bootstrap.css" rel="stylesheet" />
     <!-- FONT AWESOME STYLE  -->

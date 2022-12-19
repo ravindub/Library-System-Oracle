@@ -34,7 +34,7 @@ else
 		int rid=Integer.parseInt(request.getParameter("rid"));
 		int fine=Integer.parseInt(request.getParameter("fine"));
 		int rstatus=1;
-		String sql="update tblissuedbookdetails set fine=?,ReturnDate=?,RetrunStatus=? where id=?";
+		String sql="update issuedbookstbl set fine=?,ReturnDate=?,RetrunStatus=? where id=?";
 		ps=conn.prepareStatement(sql);
 		ps.setInt(1,fine);
 		ps.setDate(2,java.sql.Date.valueOf(date));
@@ -55,7 +55,7 @@ else
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>ABC Library | Issued Book Details</title>
+    <title>Vision Library | Issued Book Details</title>
     <!-- BOOTSTRAP CORE STYLE  -->
     <link href="assets/css/bootstrap.css" rel="stylesheet" />
     <!-- FONT AWESOME STYLE  -->
@@ -98,7 +98,7 @@ Issued Book Details
 <form role="form" method="post">
 <%
 	int rid=Integer.parseInt(request.getParameter("rid"));
-	String sql = "SELECT tblstudents.FullName,tblbooks.BookName,tblbooks.ISBNNumber,tblissuedbookdetails.IssuesDate,tblissuedbookdetails.ReturnDate,tblissuedbookdetails.id as rid,tblissuedbookdetails.fine,tblissuedbookdetails.RetrunStatus from  tblissuedbookdetails join tblstudents on tblstudents.StudentId=tblissuedbookdetails.StudentId join tblbooks on tblbooks.id=tblissuedbookdetails.BookId where tblissuedbookdetails.id=?";
+	String sql = "SELECT studentstbl.FullName,bookstbl.BookName,bookstbl.ISBNNumber,issuedbookstbl.IssuesDate,issuedbookstbl.ReturnDate,issuedbookstbl.id as rid,issuedbookstbl.fine,issuedbookstbl.RetrunStatus from  issuedbookstbl join studentstbl on studentstbl.StudentId=issuedbookstbl.StudentId join bookstbl on bookstbl.id=issuedbookstbl.BookId where issuedbookstbl.id=?";
 	ps=conn.prepareStatement(sql,ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE);
 	ps.setInt(1,rid);
 	rs=ps.executeQuery();

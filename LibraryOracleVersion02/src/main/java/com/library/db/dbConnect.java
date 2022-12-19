@@ -12,8 +12,8 @@ public class dbConnect {
 	      }
 	      else {
 	      String database = "jdbc:oracle:thin:@localhost:1521:xe";
-	      String Username = "library";
-	      String password = "library";
+	      String Username = "mylibrary";
+	      String password = "mylibrary";
 	      return getConnection(database, Username, password);
 	      }
 	   }

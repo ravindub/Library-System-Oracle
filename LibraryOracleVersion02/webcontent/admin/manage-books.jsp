@@ -18,7 +18,7 @@ else
 	String id=request.getParameter("del");
 	if(id!=null)
 	{
-		String sql = "delete from tblbooks  WHERE id=?";
+		String sql = "delete from bookstbl  WHERE id=?";
 		ps=conn.prepareStatement(sql);		
 		ps.setInt(1,Integer.parseInt(id));
 		ps.executeUpdate();
@@ -33,7 +33,7 @@ else
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>ABC Library | Manage Books</title>
+    <title>Vision Library | Manage Books</title>
     <!-- BOOTSTRAP CORE STYLE  -->
     <link href="assets/css/bootstrap.css" rel="stylesheet" />
     <!-- FONT AWESOME STYLE  -->
@@ -127,7 +127,7 @@ else
                                         </tr>
                                     </thead>
                                     <tbody>
-<% String sql = "SELECT tblbooks.BookName,tblcategory.CategoryName,tblauthors.AuthorName,tblbooks.ISBNNumber,tblbooks.BookPrice,tblbooks.id as bookid from  tblbooks join tblcategory on tblcategory.id=tblbooks.CatId join tblauthors on tblauthors.id=tblbooks.AuthorId";
+<% String sql = "SELECT bookstbl.BookName,categorytbl.CategoryName,authortbl.AuthorName,bookstbl.ISBNNumber,bookstbl.BookPrice,bookstbl.id as bookid from  bookstbl join categorytbl on categorytbl.id=bookstbl.CatId join authortbl on authortbl.id=bookstbl.AuthorId";
 ps=conn.prepareStatement(sql,ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE);
 rs=ps.executeQuery();
 

@@ -27,7 +27,7 @@ else
 	{
 		String bookName=request.getParameter("bookname");
 		
-		String sql1 ="SELECT id FROM tblbooks WHERE (BookName=?)";
+		String sql1 ="SELECT id FROM bookstbl WHERE (BookName=?)";
 		ps=conn.prepareStatement(sql1,ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE);
 		ps.setString(1,bookName);
 		ResultSet rs1=ps.executeQuery();
@@ -38,7 +38,7 @@ else
 			
 		
 		
-			String sql="INSERT INTO  tblissuedbookdetails(StudentID,BookId,IssuesDate) VALUES(?,?,?)";
+			String sql="INSERT INTO  issuedbookstbl(StudentID,BookId,IssuesDate) VALUES(?,?,?)";
 			ps=conn.prepareStatement(sql);
 			ps.setString(1,studentid);
 			ps.setInt(2,rs1.getInt("id"));
@@ -60,7 +60,7 @@ else
 		ps.close();
 	}
 else{
-	String sql = "SELECT * from tblbooks";
+	String sql = "SELECT * from bookstbl";
 	ps=conn.prepareStatement(sql,ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE);
 	rs=ps.executeQuery();
 }
@@ -72,7 +72,7 @@ else{
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>ABC Library | Borrow a new Book</title>
+    <title>Vision Library | Borrow a new Book</title>
     <!-- BOOTSTRAP CORE STYLE  -->
     <link href="assets/css/bootstrap.css" rel="stylesheet" />
     <!-- FONT AWESOME STYLE  -->

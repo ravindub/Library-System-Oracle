@@ -8,7 +8,7 @@
                 </button>
                 <a class="navbar-brand" >
 
-                    <img src="assets/img/logo1.png" height=60 />
+                    <img src="assets/img/logo2.png" height=60 />
                 </a>
 
             </div>

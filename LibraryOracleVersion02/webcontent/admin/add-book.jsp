@@ -22,7 +22,7 @@ if(add!=null)
 	String author=request.getParameter("author");
 	String isbn=request.getParameter("isbn");
 	String price=request.getParameter("price");
-	String sql="INSERT INTO  tblbooks(BookName,CatId,AuthorId,ISBNNumber,BookPrice) VALUES(?,?,?,?,?)";
+	String sql="INSERT INTO  bookstbl(BookName,CatId,AuthorId,ISBNNumber,BookPrice) VALUES(?,?,?,?,?)";
 	ps=conn.prepareStatement(sql);
 	ps.setString(1,bookname);
 	ps.setInt(2,Integer.parseInt(category));
@@ -54,7 +54,7 @@ if(add!=null)
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>ABC Library | Add Book</title>
+    <title>Vision Library | Add Book</title>
     <!-- BOOTSTRAP CORE STYLE  -->
     <link href="assets/css/bootstrap.css" rel="stylesheet" />
     <!-- FONT AWESOME STYLE  -->
@@ -98,7 +98,7 @@ Book Info
 <option value=""> Select Category</option>
 <% 
 int status=1;
-String sql = "SELECT * from  tblcategory where Status=?";
+String sql = "SELECT * from  categorytbl where Status=?";
 ps=conn.prepareStatement(sql,ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE);
 ps.setInt(1,status);
 rs=ps.executeQuery();
@@ -122,7 +122,7 @@ while(rs.next())
 <option value=""> Select Author</option>
 <% 
 
-sql = "SELECT * from  tblauthors ";
+sql = "SELECT * from  authortbl ";
 ps=conn.prepareStatement(sql,ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE);
 
 rs=ps.executeQuery();
