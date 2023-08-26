@@ -34,10 +34,10 @@ A comprehensive Library Management System built using JSP, Servlet, and backed b
     - open the 'LibraryOracle > databse' folder 
     - right click and select open in terminal
     - type this command and enter - "imp library/library  touser=library  fromuser=library  file=library.dmp"
-6.   open eclipse EE and Clone this repository.
+6.   Open eclipse EE and Clone this repository.
 7.   Go to File > properties > server to create new apache tomcat 9.0 server
-8.   right click on the project folder & go to properties > project facets > runtime and add apache tomcat 9.0 server to the project
-9.   right click on the project folder & go to run As > run on server
+8.   Right click on the project folder & go to properties > project facets > runtime and add apache tomcat 9.0 server to the project
+9.   Right click on the project folder & go to run As > run on server
       
           
 
